@@ -9,7 +9,7 @@ python3
 wind {command}
 # [example]
 wind notepad.exe /mnt/d/somedir/sonefile.txt
-# will run
+# this example will run
 notepad.exe D:/somedir/somefile.txt
 # note that command
 notepad.exe /mnt/d/somedir/somefile.txt
