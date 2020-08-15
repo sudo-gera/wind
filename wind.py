@@ -1,13 +1,11 @@
-#!/usr/bin/env python3
+''':'
+python3 $0 $@
+exit
+':'''
 from sys import argv
-from os import popen
-from os import system
-from os.path import abspath
-for w in range(1,len(argv)):
- if '/' in argv[w]:
-  if system('wslpath -m '+argv[w]+'> /dev/null 2>/dev/null')==0:
-   argv[w]=popen('wslpath -m '+argv[w]).read().strip()
-q=' '.join(argv[1:])
-print(q)
-system('"'+q+'"')
-print('\n')
+arg0=argv[1]
+argv=[w if w[0]=='-'  else w if w[0] != '/' else w[5].upper()+':'+w[6:] if w.startswith('/mnt/') else '\\\\wsl$\\Ubuntu'+w for w in argv]
+if '/' not in arg0:
+	argv[0]=arg0
+from subprocess import run
+run(argv)
