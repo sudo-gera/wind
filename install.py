@@ -2,7 +2,10 @@
 from os import *
 from os.path import *
 from sys import argv
-q=abspath(argv[0])
-q=q[:-len(q.split('/')[-1])]
+q = str(abspath(dirname(argv[0])))+'/'
 from subprocess import run
-system(' '.join(['ln',q+'wind.py','~/.local/bin/wind']))
+path='/usr/bin/wind'
+if not exists(path):
+	run(['sudo','ln','-s',q+'wind.py',pathbash]).returncode
+	run(['sudo','chmod','777',path])
+	
