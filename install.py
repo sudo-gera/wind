@@ -8,4 +8,3 @@ path='/usr/bin/wind'
 if not exists(path):
 	run(['sudo','ln','-s',q+'wind.py',path]).returncode
 	run(['sudo','chmod','777',path])
-	
